@@ -1,0 +1,53 @@
+version: "3"
+services:
+  prestashop:
+    image: prestashop/prestashop
+    networks:
+      myprestashop:
+    ports:
+      - 8080:80
+    links:
+      - mariadb:mariadb
+    depends_on:
+      - mariadb
+    volumes:
+      - ./src/:/var/www/html
+      - ./src/modules:/var/www/html/modules
+      - ./src/themes:/var/www/html/themes
+      - ./src/override:/var/www/html/override
+    environment:
+      - PS_DEV_MODE=1
+      - DB_SERVER=mariadb
+      - DB_USER=root
+      - DB_PASSWD=root
+      - DB_NAME=prestashop
+      - PS_INSTALL_AUTO=0
+
+  mariadb:
+    image: mariadb
+    networks:
+      myprestashop:
+    volumes:
+      - ./src/database:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=prestashop
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    networks:
+      myprestashop:
+    links:
+      - mariadb:mariadb
+    ports:
+      - 1235:80
+    depends_on:
+      - mariadb
+    environment:
+      - PMA_HOST=mariadb
+      - PMA_USER=root
+      - PMA_PASSWORD=root
+
+networks:
+  myprestashop:
+    external: true
