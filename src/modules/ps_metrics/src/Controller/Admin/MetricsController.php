@@ -98,25 +98,11 @@ class MetricsController extends FrameworkBundleAdminController
         /** @var ModuleHelper $moduleHelper */
         $moduleHelper = $this->module->getService('ps_metrics.helper.module');
 
-        $pathMetricsApp = $configHelper->getUseLocalVueApp()
-            ? $this->module->getPathUri() . '_dev/dist/js/metrics.js'
-            : $configHelper->getPsMetricsCdnUrl() . 'js/metrics.js';
-        $pathMetricsAssets = $configHelper->getUseLocalVueApp()
-            ? $this->module->getPathUri() . '_dev/dist/css/style.css'
-            : $configHelper->getPsMetricsCdnUrl() . 'css/style.css';
+        $pathAppBuilded = '/modules/' . $this->module->name . '/_dev/dist/js/metrics.js';
+        $pathAppCdn = $configHelper->getPsMetricsCdnUrl() . 'js/metrics.js';
 
-        $pathMetricsAppSourceMap = null;
-        if (
-            file_exists(
-                _PS_MODULE_DIR_ .
-                    $this->module->name .
-                    '/_dev/dist/js/metrics.js.map'
-            )
-        ) {
-            $pathMetricsAppSourceMap = $configHelper->getUseLocalVueApp()
-                ? $this->module->getPathUri() . '_dev/dist/js/metrics.js.map'
-                : $configHelper->getPsMetricsCdnUrl() . 'js/metrics.js.map';
-        }
+        $pathAssetsBuilded = '/modules/' . $this->module->name . '/_dev/dist/css/style.css';
+        $pathAssetsCdn = $configHelper->getPsMetricsCdnUrl() . 'css/style.css';
 
         $link = $prestashopHelper->getLink();
 
@@ -128,9 +114,12 @@ class MetricsController extends FrameworkBundleAdminController
                     'Admin.Navigation.Menu'
                 ),
                 'showContentHeader' => false,
-                'pathMetricsApp' => $pathMetricsApp,
-                'pathMetricsAppSourceMap' => $pathMetricsAppSourceMap,
-                'pathMetricsAssets' => $pathMetricsAssets,
+                'useLocalVueApp' => $configHelper->getUseLocalVueApp(),
+                'useBuildModeOnly' => $configHelper->getUseBuildModeOnly(),
+                'pathAppBuilded' => $pathAppBuilded,
+                'pathAppCdn' => $pathAppCdn,
+                'pathAssetsBuilded' => $pathAssetsBuilded,
+                'pathAssetsCdn' => $pathAssetsCdn,
                 'contextPsAccounts' => $this->module->loadPsAccountsAssets(),
                 'metricsApiUrl' => $prestashopHelper->getLinkWithoutToken(
                     'MetricsResolverController',

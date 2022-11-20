@@ -129,11 +129,12 @@ class HttpFactory
     }
 
     /**
+     * @param array $postBody
      * @param array $httpCustomOptions
      *
      * @return array
      */
-    public function post($httpCustomOptions = [])
+    public function post($postBody = [], $httpCustomOptions = [])
     {
         $httpClientOptions = [
              'base_url' => $this->getUrl(),
@@ -152,7 +153,7 @@ class HttpFactory
 
         try {
             $response = $client->sendRequest(
-                new Request('POST', $this->getRoute())
+                new Request('POST', $this->getRoute(), [], (string) json_encode($postBody))
             );
         } catch (ClientExceptionInterface $e) {
             $response = $this->guzzleApiResponseExceptionHandler->get($e->getMessage());

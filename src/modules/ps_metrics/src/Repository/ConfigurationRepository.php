@@ -111,19 +111,4 @@ class ConfigurationRepository
             $this->shopId
         );
     }
-
-    /**
-     * getGoogleTagLinkedValue
-     *
-     * @return bool
-     */
-    public function getGoogleTagLinkedValue()
-    {
-        return (bool) Configuration::get(
-            self::ACCOUNT_GOOGLETAG_LINKED,
-            null,
-            null,
-            $this->shopId
-        );
-    }
 }

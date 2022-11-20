@@ -29,7 +29,6 @@ use PrestaShop\Module\Ps_metrics\Helper\ShopHelper;
 use PrestaShop\Module\Ps_metrics\Helper\ToolsHelper;
 use PrestaShop\Module\Ps_metrics\Module\GAInstaller;
 use PrestaShop\Module\Ps_metrics\Provider\AnalyticsAccountsListProvider;
-use PrestaShop\Module\Ps_metrics\Provider\GoogleTagProvider;
 use PrestaShop\Module\Ps_metrics\Repository\ConfigurationRepository;
 use PrestaShop\Module\Ps_metrics\Repository\OrderRepository;
 use PrestaShop\PsAccountsInstaller\Installer\Exception\InstallerException;
@@ -62,11 +61,6 @@ class ShopDataPresenter
      * @var AnalyticsAccountsListProvider
      */
     private $analyticsAccountsListProvider;
-
-    /**
-     * @var GoogleTagProvider
-     */
-    private $googleTagProvider;
 
     /**
      * @var GAInstaller
@@ -111,7 +105,6 @@ class ShopDataPresenter
      * @param ConfigurationRepository $configurationRepository
      * @param ShopHelper $shopHelper
      * @param AnalyticsAccountsListProvider $analyticsAccountsListProvider
-     * @param GoogleTagProvider $googleTagProvider
      * @param GAInstaller $gaInstaller
      * @param HttpApi $httpApi
      * @param PsAccounts $psAccountsFacade
@@ -128,7 +121,6 @@ class ShopDataPresenter
         ConfigurationRepository $configurationRepository,
         ShopHelper $shopHelper,
         AnalyticsAccountsListProvider $analyticsAccountsListProvider,
-        GoogleTagProvider $googleTagProvider,
         GAInstaller $gaInstaller,
         HttpApi $httpApi,
         PsAccounts $psAccountsFacade,
@@ -142,7 +134,6 @@ class ShopDataPresenter
         $this->configurationRepository = $configurationRepository;
         $this->shopHelper = $shopHelper;
         $this->analyticsAccountsListProvider = $analyticsAccountsListProvider;
-        $this->googleTagProvider = $googleTagProvider;
         $this->gaInstaller = $gaInstaller;
         $this->httpApi = $httpApi;
         $this->psAccountsFacade = $psAccountsFacade;
@@ -162,7 +153,6 @@ class ShopDataPresenter
         $currentShop = $this->shopHelper->getShopUrl(
             $this->prestashopHelper->getShopId()
         );
-        $this->googleTagProvider->setBaseUrl($currentShop['url']);
 
         try {
             $psAccountsService = $this->psAccountsFacade->getPsAccountsService();
@@ -308,10 +298,6 @@ class ShopDataPresenter
                 'list' => $this->analyticsAccountsListProvider->getAccountsList(),
                 'selected' => $this->analyticsAccountsListProvider->getSelectedAccount(),
                 'username' => $this->analyticsAccountsListProvider->getUserName(),
-                'tags' => [
-                    'GTAAvailable' => $this->googleTagProvider->findGoogleTagsAnalytics(),
-                    'GTMAvailable' => $this->googleTagProvider->findGoogleTagsManager(),
-                ],
                 'error' => $this->toolsHelper->getValue('google_message_error'),
             ],
         ];

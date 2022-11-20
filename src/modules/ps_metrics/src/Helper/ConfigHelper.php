@@ -81,4 +81,14 @@ class ConfigHelper
     {
         return ('false' === $this->env->get('USE_LOCAL_VUE_APP')) ? false : true;
     }
+
+    /**
+     * Get metrics cdn enabled
+     *
+     * @return bool
+     */
+    public function getUseBuildModeOnly(): bool
+    {
+        return ('false' === $this->env->get('USE_BUILD_MODE_ONLY')) ? false : true;
+    }
 }

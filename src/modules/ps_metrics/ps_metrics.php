@@ -69,7 +69,7 @@ class Ps_metrics extends Module
     {
         $this->name = 'ps_metrics';
         $this->tab = 'advertising_marketing';
-        $this->version = '3.5.1';
+        $this->version = '3.5.4';
         $this->author = 'PrestaShop';
         $this->need_instance = 0;
         $this->module_key = '697657ffe038d20741105e95a10b12d1';
@@ -100,7 +100,7 @@ class Ps_metrics extends Module
 
         if ($this->serviceContainer === null) {
             $this->serviceContainer = new ServiceContainer(
-                $this->name,
+                (string) $this->name,
                 $this->getLocalPath()
             );
         }
@@ -216,10 +216,17 @@ class Ps_metrics extends Module
      *
      * @return string
      * @return void
+     *
+     * @throws \PrestaShopException
      */
     public function getContent()
     {
         $link = $this->context->link;
+
+        if (null == $link) {
+            throw new \PrestaShopException('Link is null');
+        }
+
         \Tools::redirectAdmin(
             $link->getAdminLink('MetricsController', true, [
                 'route' => 'metrics_page',
@@ -314,27 +321,41 @@ class Ps_metrics extends Module
         $assets = $this->buildAssets($currentPage);
 
         if ($legacy) {
-            $this->context->smarty->assign(
-                'pathMetricsApp',
-                $assets['pathMetricsApp']
-            );
-            $this->context->smarty->assign(
-                'pathMetricsAssets',
-                $assets['pathMetricsAssets']
-            );
-            $this->context->smarty->assign(
-                'pathMetricsAppSourceMap',
-                $assets['pathMetricsAppSourceMap']
-            );
+            if (null != $this->context->smarty) {
+                $this->context->smarty->assign(
+                    'useLocalVueApp',
+                    $assets['useLocalVueApp']
+                );
+                $this->context->smarty->assign(
+                    'useBuildModeOnly',
+                    $assets['useBuildModeOnly']
+                );
+                $this->context->smarty->assign(
+                    'pathAppBuilded',
+                    $assets['pathAppBuilded']
+                );
+                $this->context->smarty->assign(
+                    'pathAppCdn',
+                    $assets['pathAppCdn']
+                );
+                $this->context->smarty->assign(
+                    'pathAssetsBuilded',
+                    $assets['pathAssetsBuilded']
+                );
+                $this->context->smarty->assign(
+                    'pathAssetsCdn',
+                    $assets['pathAssetsCdn']
+                );
+            }
         } else {
             $twig = $this->loadInstance('twig');
 
-            $twig->addGlobal('pathMetricsApp', $assets['pathMetricsApp']);
-            $twig->addGlobal('pathMetricsAssets', $assets['pathMetricsAssets']);
-            $twig->addGlobal(
-                'pathMetricsAppSourceMap',
-                $assets['pathMetricsAppSourceMap']
-            );
+            $twig->addGlobal('useLocalVueApp', $assets['useLocalVueApp']);
+            $twig->addGlobal('useBuildModeOnly', $assets['useBuildModeOnly']);
+            $twig->addGlobal('pathAppBuilded', $assets['pathAppBuilded']);
+            $twig->addGlobal('pathAppCdn', $assets['pathAppCdn']);
+            $twig->addGlobal('pathAssetsBuilded', $assets['pathAssetsBuilded']);
+            $twig->addGlobal('pathAssetsCdn', $assets['pathAssetsCdn']);
         }
 
         return $assets;
@@ -346,6 +367,8 @@ class Ps_metrics extends Module
      * @param string $currentPage
      *
      * @return array
+     *
+     * @throws \PrestaShopException
      */
     private function buildAssets($currentPage = 'dashboard')
     {
@@ -361,30 +384,33 @@ class Ps_metrics extends Module
         /** @var ModuleHelper $moduleHelper */
         $moduleHelper = $this->getService('ps_metrics.helper.module');
 
-        $pathMetricsApp = $configHelper->getUseLocalVueApp()
-            ? $this->_path . '_dev/dist/js/metrics.js'
-            : $configHelper->getPsMetricsCdnUrl() . 'js/metrics.js';
-        $pathMetricsAssets = $configHelper->getUseLocalVueApp()
-            ? $this->_path . '_dev/dist/css/style.css'
-            : $configHelper->getPsMetricsCdnUrl() . 'css/style.css';
+        $pathAppBuilded = '/modules/' . $this->name . '/_dev/dist/js/metrics.js';
+        $pathAppCdn = $configHelper->getPsMetricsCdnUrl() . 'js/metrics.js';
 
-        $pathMetricsAppSourceMap = null;
-        if (
-            file_exists(
-                _PS_MODULE_DIR_ . $this->name . '/_dev/dist/js/metrics.js.map'
-            )
-        ) {
-            $pathMetricsAppSourceMap = $configHelper->getUseLocalVueApp()
-                ? $this->_path . '_dev/dist/js/metrics.js.map'
-                : $configHelper->getPsMetricsCdnUrl() . 'js/metrics.js.map';
-        }
+        $pathAssetsBuilded = '/modules/' . $this->name . '/_dev/dist/css/style.css';
+        $pathAssetsCdn = $configHelper->getPsMetricsCdnUrl() . 'css/style.css';
 
         $link = $this->context->link;
 
+        if (null == $link) {
+            throw new \PrestaShopException('Link is null');
+        }
+
+        $graphqlEndpoint = '';
+
+        $graphqlEndpoint = $link->getAdminLink(
+            'MetricsGraphqlController',
+            true,
+            ['route' => 'metrics_graphql']
+        );
+
         return [
-            'pathMetricsApp' => $pathMetricsApp,
-            'pathMetricsAppSourceMap' => $pathMetricsAppSourceMap,
-            'pathMetricsAssets' => $pathMetricsAssets,
+            'useLocalVueApp' => $configHelper->getUseLocalVueApp(),
+            'useBuildModeOnly' => $configHelper->getUseBuildModeOnly(),
+            'pathAppBuilded' => $pathAppBuilded,
+            'pathAppCdn' => $pathAppCdn,
+            'pathAssetsBuilded' => $pathAssetsBuilded,
+            'pathAssetsCdn' => $pathAssetsCdn,
             'contextPsAccounts' => $this->loadPsAccountsAssets(),
             'oAuthGoogleErrorMessage' => $toolsHelper->getValue(
                 'google_message_error'
@@ -406,11 +432,7 @@ class Ps_metrics extends Module
             'accountsModule' => $moduleHelper->buildModuleInformations(
                 'ps_accounts'
             ),
-            'graphqlEndpoint' => $link->getAdminLink(
-                'MetricsGraphqlController',
-                true,
-                ['route' => 'metrics_graphql']
-            ),
+            'graphqlEndpoint' => $graphqlEndpoint,
             'isoCode' => $prestashopHelper->getLanguageIsoCode(),
             'currencyIsoCode' => $prestashopHelper->getCurrencyIsoCode(),
             'currentPage' => $currentPage,
@@ -464,10 +486,12 @@ class Ps_metrics extends Module
             $accounts = $this->getService('ps_accounts.facade');
             $psAccounts = $accounts->getPsAccountsService();
 
-            $this->context->smarty->assign(
-                'urlAccountsVueCdn',
-                $psAccounts->getAccountsVueCdn()
-            );
+            if (null != $this->context->smarty) {
+                $this->context->smarty->assign(
+                    'urlAccountsVueCdn',
+                    $psAccounts->getAccountsVueCdn()
+                );
+            }
 
             return $accounts->getPsAccountsPresenter()->present($this->name);
         }

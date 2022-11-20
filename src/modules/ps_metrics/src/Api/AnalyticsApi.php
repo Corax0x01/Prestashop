@@ -67,9 +67,7 @@ class AnalyticsApi
     {
         $this->client->setRoute('/shops/' . $this->getShopId() . '/reportings');
 
-        $reportings = $this->client->post([
-            'json' => $data,
-        ]);
+        $reportings = $this->client->post($data);
 
         return !empty($reportings['error']) ? [] : $reportings;
     }
@@ -102,9 +100,7 @@ class AnalyticsApi
             '/shops/' . $this->getShopId() . '/accounts/selection'
         );
 
-        $accountSelected = $this->client->post([
-            'json' => $data,
-        ]);
+        $accountSelected = $this->client->post($data);
 
         return !empty($accountSelected['error'])
             ? false
@@ -154,9 +150,7 @@ class AnalyticsApi
             '/shops/' . $this->getShopId() . '/google/generate-auth-url'
         );
 
-        $generated = $this->client->post([
-            'json' => $data,
-        ]);
+        $generated = $this->client->post($data);
 
         return !empty($generated['error']) ? [] : $generated['body'];
     }

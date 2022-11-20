@@ -24,14 +24,11 @@ namespace PrestaShop\Module\Ps_metrics\Controller\Admin;
 use PrestaShop\Module\Ps_metrics\Api\AnalyticsApi;
 use PrestaShop\Module\Ps_metrics\Helper\JsonHelper;
 use PrestaShop\Module\Ps_metrics\Helper\PrestaShopHelper;
-use PrestaShop\Module\Ps_metrics\Helper\ShopHelper;
 use PrestaShop\Module\Ps_metrics\Module\Uninstall;
 use PrestaShop\Module\Ps_metrics\Module\Upgrade;
 use PrestaShop\Module\Ps_metrics\Presenter\FaqPresenter;
 use PrestaShop\Module\Ps_metrics\Presenter\ShopDataPresenter;
 use PrestaShop\Module\Ps_metrics\Provider\AnalyticsAccountsListProvider;
-use PrestaShop\Module\Ps_metrics\Provider\GoogleTagProvider;
-use PrestaShop\Module\Ps_metrics\Repository\ConfigurationRepository;
 use PrestaShop\Module\Ps_metrics\Validation\SelectAccountAnalytics;
 use PrestaShop\PsAccountsInstaller\Installer\Facade\PsAccounts;
 use PrestaShopBundle\Controller\Admin\FrameworkBundleAdminController;
@@ -110,7 +107,10 @@ class MetricsResolverController extends FrameworkBundleAdminController
         $context = \Context::getContext();
 
         if (null !== $context) {
-            $categoryTree = \Category::getNestedCategories(\Category::getRootCategory()->id, (int) $context->language->id, false);
+            /** @var \Language $language */
+            $language = $context->language;
+
+            $categoryTree = \Category::getNestedCategories(\Category::getRootCategory()->id, (int) $language->id, false);
         }
 
         if (null === $categoryTree) {
@@ -182,49 +182,6 @@ class MetricsResolverController extends FrameworkBundleAdminController
         return new Response($upgrade->upgradeMetrics(), 200, [
             'Content-Type' => 'application/json',
         ]);
-    }
-
-    /**
-     * Get all existing Google Tags in Front End shop and retrieve them
-     *
-     * @return Response
-     */
-    public function getExistingGoogleTags(): Response
-    {
-        /** @var ConfigurationRepository $configurationRepository */
-        $configurationRepository = $this->module->getService(
-            'ps_metrics.repository.configuration'
-        );
-
-        /** @var ShopHelper $shopHelper */
-        $shopHelper = $this->module->getService('ps_metrics.helper.shop');
-
-        /** @var PrestaShopHelper $prestashopHelper */
-        $prestashopHelper = $this->module->getService('ps_metrics.helper.prestashop');
-
-        /** @var JsonHelper $jsonHelper */
-        $jsonHelper = $this->module->getService('ps_metrics.helper.json');
-
-        /** @var GoogleTagProvider $googleTagProvider */
-        $googleTagProvider = $this->module->getService('ps_metrics.provider.googletag');
-
-        // If google Tag is already set as linked, we avoid to retrieve the Google Tag
-        // Only the PSL will tell us if we should retrieve TAGS again
-        if (true === $configurationRepository->getGoogleTagLinkedValue()) {
-            return new Response('true');
-        }
-
-        $currentShop = $shopHelper->getShopUrl($prestashopHelper->getShopId());
-        $googleTagProvider->setBaseUrl($currentShop['url']);
-
-        return new Response(
-            $jsonHelper->jsonEncode([
-                'analytics' => $googleTagProvider->findGoogleTagsAnalytics(),
-                'manager' => $googleTagProvider->findGoogleTagsManager(),
-            ]),
-            200,
-            ['Content-Type' => 'application/json']
-        );
     }
 
     /**

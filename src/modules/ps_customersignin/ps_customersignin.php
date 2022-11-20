@@ -42,9 +42,8 @@ class Ps_CustomerSignIn extends Module implements WidgetInterface
     public function __construct()
     {
         $this->name = 'ps_customersignin';
-        $this->tab = 'front_office_features';
         $this->author = 'PrestaShop';
-        $this->version = '2.0.5';
+        $this->version = '2.0.4';
         $this->need_instance = 0;
 
         parent::__construct();
@@ -66,8 +65,7 @@ class Ps_CustomerSignIn extends Module implements WidgetInterface
             }
         }
 
-        return parent::install()
-            && $this->registerHook('displayNav2');
+        return parent::install();
     }
 
     public function getWidgetVariables($hookName, array $configuration)
@@ -90,9 +88,6 @@ class Ps_CustomerSignIn extends Module implements WidgetInterface
         $link = $this->context->link;
 
         return [
-            /*
-            * @deprecated
-            */
             'logged' => $logged,
             'customerName' => $customerName,
             /*

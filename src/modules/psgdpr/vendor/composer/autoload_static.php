@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit4078ed517d6d65f89282a2373f7d038b
+class ComposerStaticInit8d839fd93816c5535c5a72063a7715e7
 {
     public static $classMap = array (
         'AdminAjaxPsgdprController' => __DIR__ . '/../..' . '/controllers/admin/AdminAjaxPsgdprController.php',
@@ -22,7 +22,7 @@ class ComposerStaticInit4078ed517d6d65f89282a2373f7d038b
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->classMap = ComposerStaticInit4078ed517d6d65f89282a2373f7d038b::$classMap;
+            $loader->classMap = ComposerStaticInit8d839fd93816c5535c5a72063a7715e7::$classMap;
 
         }, null, ClassLoader::class);
     }

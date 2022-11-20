@@ -18,7 +18,6 @@ services:
       - "@ps_metrics.repository.configuration"
       - "@ps_metrics.helper.shop"
       - "@ps_metrics.provider.analyticsaccountslist"
-      - "@ps_metrics.provider.googletag"
       - "@ps_metrics.module.gainstaller"
       - "@ps_metrics.api.http"
       - "@ps_accounts.facade"

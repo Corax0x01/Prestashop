@@ -33,7 +33,7 @@ module.exports = {
   },
   output: {
     filename: '[name].js',
-    publicPath: '',
+    publicPath: path.resolve(__dirname, './views/dist'),
     path: path.resolve(__dirname, './views/dist'),
   },
   module: {

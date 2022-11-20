@@ -2,13 +2,13 @@
 
 {shop_url}
 
-Witaj,
+Hi,
 
-{product} jest teraz dostępny.
+{product} is now available.
 
-Dobra wiadomość, ten produkt jest ponownie dostępny!
+Good news, this item is back in stock!
 
-Kliknij następujący link, aby odwiedzić stronę produktu i zamówić: [{product}]({product_link})
+Click on the following link to visit the product page and order it: [{product}]({product_link})
 
 [{shop_name}]({shop_url})
 

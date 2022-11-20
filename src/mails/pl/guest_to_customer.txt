@@ -2,18 +2,18 @@
 
 {shop_url}
 
-Witaj {firstname} {lastname},
+Hi {firstname} {lastname},
 
-Twoje konto gościa zostało przekształcone w konto klienta
+Your guest account has been turned into a customer account
 
-Gratulacja, Twoje konto gościa w {shop_name} zostało przekształcone w konto klienta!
+Congratulations, your guest account for {shop_name} has been turned into a customer account!
 
-Adres e-mail: {email}
+Email address: {email}
 
-Kliknij w poniższy link aby ustalić swoje hasło:
+Click on the following link to set up your password:
 {url}
 
-Możesz uzyskać dostęp do konta klienta w naszym sklepie: [{shop_name}]({shop_url})
+You can access your customer account on our shop: [{shop_name}]({shop_url})
 
 [{shop_name}]({shop_url})
 

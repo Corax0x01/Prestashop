@@ -173,7 +173,6 @@ return array(
     'PrestaShop\\Module\\Ps_metrics\\Presenter\\FaqPresenter' => $baseDir . '/src/Presenter/FaqPresenter.php',
     'PrestaShop\\Module\\Ps_metrics\\Presenter\\ShopDataPresenter' => $baseDir . '/src/Presenter/ShopDataPresenter.php',
     'PrestaShop\\Module\\Ps_metrics\\Provider\\AnalyticsAccountsListProvider' => $baseDir . '/src/Provider/AnalyticsAccountsListProvider.php',
-    'PrestaShop\\Module\\Ps_metrics\\Provider\\GoogleTagProvider' => $baseDir . '/src/Provider/GoogleTagProvider.php',
     'PrestaShop\\Module\\Ps_metrics\\Repository\\ConfigurationRepository' => $baseDir . '/src/Repository/ConfigurationRepository.php',
     'PrestaShop\\Module\\Ps_metrics\\Repository\\HookModuleRepository' => $baseDir . '/src/Repository/HookModuleRepository.php',
     'PrestaShop\\Module\\Ps_metrics\\Repository\\OrderRepository' => $baseDir . '/src/Repository/OrderRepository.php',

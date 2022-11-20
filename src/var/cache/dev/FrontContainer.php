@@ -1206,14 +1206,14 @@ class FrontContainer extends \PrestaShop\PrestaShop\Adapter\Container\LegacyCont
         $b = new \Doctrine\Persistence\Mapping\Driver\MappingDriverChain();
 
         $c = ${($_ = isset($this->services['annotation_reader']) ? $this->services['annotation_reader'] : ($this->services['annotation_reader'] = new \Doctrine\Common\Annotations\AnnotationReader())) && false ?: '_'};
-        $d = new \Doctrine\ORM\Mapping\Driver\AnnotationDriver($c, [0 => '/var/www/html/modules/productcomments/src/Entity']);
-        $d->addExcludePaths([0 => '/var/www/html/modules/productcomments/src/Entity/index.php']);
-        $e = new \Doctrine\ORM\Mapping\Driver\AnnotationDriver($c, [0 => '/var/www/html/modules/ps_checkout/src/Entity']);
-        $e->addExcludePaths([0 => '/var/www/html/modules/ps_checkout/src/Entity/index.php']);
+        $d = new \Doctrine\ORM\Mapping\Driver\AnnotationDriver($c, [0 => '/var/www/html/modules/ps_checkout/src/Entity']);
+        $d->addExcludePaths([0 => '/var/www/html/modules/ps_checkout/src/Entity/index.php']);
+        $e = new \Doctrine\ORM\Mapping\Driver\AnnotationDriver($c, [0 => '/var/www/html/modules/productcomments/src/Entity']);
+        $e->addExcludePaths([0 => '/var/www/html/modules/productcomments/src/Entity/index.php']);
 
         $b->addDriver(new \Doctrine\ORM\Mapping\Driver\AnnotationDriver($c, [0 => '/var/www/html/src/PrestaShopBundle/Entity']), 'PrestaShop');
-        $b->addDriver($d, 'PrestaShop\\Module\\ProductComment\\Entity');
-        $b->addDriver($e, 'PrestaShop\\Module\\PrestashopCheckout\\Entity');
+        $b->addDriver($d, 'PrestaShop\\Module\\PrestashopCheckout\\Entity');
+        $b->addDriver($e, 'PrestaShop\\Module\\ProductComment\\Entity');
 
         $a->setEntityNamespaces(['PrestaShopBundle\\Entity' => 'PrestaShop']);
         $a->setMetadataCacheImpl(${($_ = isset($this->services['doctrine.orm.cache.provider.cache.doctrine.orm.default.metadata']) ? $this->services['doctrine.orm.cache.provider.cache.doctrine.orm.default.metadata'] : $this->getDoctrine_Orm_Cache_Provider_Cache_Doctrine_Orm_Default_MetadataService()) && false ?: '_'});
@@ -1230,8 +1230,8 @@ class FrontContainer extends \PrestaShop\PrestaShop\Adapter\Container\LegacyCont
         $a->setEntityListenerResolver(${($_ = isset($this->services['doctrine.orm.default_entity_listener_resolver']) ? $this->services['doctrine.orm.default_entity_listener_resolver'] : ($this->services['doctrine.orm.default_entity_listener_resolver'] = new \Doctrine\Bundle\DoctrineBundle\Mapping\ContainerEntityListenerResolver($this))) && false ?: '_'});
         $a->setRepositoryFactory(new \Doctrine\Bundle\DoctrineBundle\Repository\ContainerRepositoryFactory(new \Symfony\Component\DependencyInjection\ServiceLocator([])));
         $a->addCustomStringFunction('regexp', 'DoctrineExtensions\\Query\\Mysql\\Regexp');
-        $a->addEntityNamespace('Moduleproductcomments', 'PrestaShop\\Module\\ProductComment\\Entity');
         $a->addEntityNamespace('ModulepsCheckout', 'PrestaShop\\Module\\PrestashopCheckout\\Entity');
+        $a->addEntityNamespace('Moduleproductcomments', 'PrestaShop\\Module\\ProductComment\\Entity');
 
         $this->services['doctrine.orm.default_entity_manager'] = $instance = \Doctrine\ORM\EntityManager::create(${($_ = isset($this->services['doctrine.dbal.default_connection']) ? $this->services['doctrine.dbal.default_connection'] : $this->getDoctrine_Dbal_DefaultConnectionService()) && false ?: '_'}, $a);
 
@@ -3045,15 +3045,15 @@ class FrontContainer extends \PrestaShop\PrestaShop\Adapter\Container\LegacyCont
             'mailer_host' => '127.0.0.1',
             'mailer_user' => NULL,
             'mailer_password' => NULL,
-            'secret' => 'mktCf2Api7B17osgVNBw1ojQpkj5d7BhIFTB0yNGxnV9ATMS0VWWoL3IeIsu4XSm',
+            'secret' => 'qUFQuXFH9yeQr98DiisDbkqUkSq4Y6DaokSMG5xA3syyUM6DDicWUVUV2hh90jvD',
             'ps_caching' => 'CacheMemcache',
             'ps_cache_enable' => false,
-            'ps_creation_date' => '2022-10-24',
+            'ps_creation_date' => '2022-11-20',
             'locale' => 'en-US',
             'use_debug_toolbar' => true,
-            'cookie_key' => 'SuXN9r6WtDhfCH7voh42rkcp3CyKjCs0FC36ChbBm4fRR504IUAKRaADIem3hKr8',
-            'cookie_iv' => 'dnq5Jfq11RPMJtB2QGVW8ammh2DUrARC',
-            'new_cookie_key' => 'def00000c7aa5aa6e72acd47bacd1d5677cadf22b1e55f71e7bd1f3a04011e98488ac2a6e38400df7a376b5edca37033d5623c8cb3ba7024e46558b473ffe958b3af9896',
+            'cookie_key' => 'kZYb4B9sw5AL7ce6NtRwnohvOQa4kZnv9VOy8UFo2sx1BPGwSkA2oDvIVneYewDd',
+            'cookie_iv' => 'CXH5i69wnQI5zjWEjCJzVJDn3SxrGAeQ',
+            'new_cookie_key' => 'def00000a5037b60f40428ef0a206c49ec6528efbc4bfc7afcc7845ceab2efb08868975641be5a423de16cdb472f23628fe00828dcf2db15bb40e1f2404b5e89220c2c31',
             'cache.driver' => 'array',
             'kernel.bundles' => [
 
@@ -3087,48 +3087,47 @@ class FrontContainer extends \PrestaShop\PrestaShop\Adapter\Container\LegacyCont
                 19 => 'ps_customtext',
                 20 => 'ps_dataprivacy',
                 21 => 'ps_emailsubscription',
-                22 => 'ps_faviconnotificationbo',
-                23 => 'ps_featuredproducts',
-                24 => 'ps_imageslider',
-                25 => 'ps_languageselector',
-                26 => 'ps_linklist',
-                27 => 'ps_mainmenu',
-                28 => 'ps_searchbar',
-                29 => 'ps_sharebuttons',
-                30 => 'ps_shoppingcart',
-                31 => 'ps_socialfollow',
-                32 => 'ps_themecusto',
-                33 => 'ps_wirepayment',
-                34 => 'statsbestcategories',
-                35 => 'statsbestcustomers',
-                36 => 'statsbestproducts',
-                37 => 'statsbestsuppliers',
-                38 => 'statsbestvouchers',
-                39 => 'statscarrier',
-                40 => 'statscatalog',
-                41 => 'statscheckup',
-                42 => 'statsdata',
-                43 => 'statsforecast',
-                44 => 'statsnewsletter',
-                45 => 'statspersonalinfos',
-                46 => 'statsproduct',
-                47 => 'statsregistrations',
-                48 => 'statssales',
-                49 => 'statssearch',
-                50 => 'statsstock',
-                51 => 'welcome',
-                52 => 'gamification',
-                53 => 'psaddonsconnect',
-                54 => 'psgdpr',
-                55 => 'ps_mbo',
-                56 => 'ps_buybuttonlite',
-                57 => 'ps_checkout',
-                58 => 'ps_metrics',
-                59 => 'ps_facebook',
-                60 => 'psxmarketingwithgoogle',
-                61 => 'blockreassurance',
-                62 => 'ps_facetedsearch',
-                63 => 'ps_googleanalytics',
+                22 => 'ps_facetedsearch',
+                23 => 'ps_faviconnotificationbo',
+                24 => 'ps_featuredproducts',
+                25 => 'ps_imageslider',
+                26 => 'ps_languageselector',
+                27 => 'ps_linklist',
+                28 => 'ps_mainmenu',
+                29 => 'ps_searchbar',
+                30 => 'ps_sharebuttons',
+                31 => 'ps_shoppingcart',
+                32 => 'ps_socialfollow',
+                33 => 'ps_themecusto',
+                34 => 'ps_wirepayment',
+                35 => 'statsbestcategories',
+                36 => 'statsbestcustomers',
+                37 => 'statsbestproducts',
+                38 => 'statsbestsuppliers',
+                39 => 'statsbestvouchers',
+                40 => 'statscarrier',
+                41 => 'statscatalog',
+                42 => 'statscheckup',
+                43 => 'statsdata',
+                44 => 'statsforecast',
+                45 => 'statsnewsletter',
+                46 => 'statspersonalinfos',
+                47 => 'statsproduct',
+                48 => 'statsregistrations',
+                49 => 'statssales',
+                50 => 'statssearch',
+                51 => 'statsstock',
+                52 => 'welcome',
+                53 => 'gamification',
+                54 => 'psaddonsconnect',
+                55 => 'psgdpr',
+                56 => 'ps_mbo',
+                57 => 'ps_buybuttonlite',
+                58 => 'ps_checkout',
+                59 => 'ps_metrics',
+                60 => 'ps_facebook',
+                61 => 'psxmarketingwithgoogle',
+                62 => 'blockreassurance',
             ],
             'ps_cache_dir' => '/var/www/html/var/cache/dev/',
             'mail_themes_uri' => '/mails/themes',

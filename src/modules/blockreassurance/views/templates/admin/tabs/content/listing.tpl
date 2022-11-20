@@ -56,10 +56,10 @@
                                     {/if}
                                 </div>
                                 <div class="col-xs-2">
-                                    {$block['title'][{$defaultFormLanguage}]}
+                                    {$block['title']}
                                 </div>
                                 <div class="col-xs-4">
-                                    {$block['description'][{$defaultFormLanguage}]}
+                                    {$block['description']}
                                 </div>
                                 <div class="col-xs-2">
                                     {if $block['type_link'] == $LINK_TYPE_NONE}

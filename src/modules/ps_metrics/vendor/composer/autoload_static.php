@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInitd795849c57a4ef00c1feb42e8958b3a9
+class ComposerStaticInit6fe22d3985705fb178eede4145961712
 {
     public static $files = array (
         '9c67151ae59aff4788964ce8eb2a0f43' => __DIR__ . '/..' . '/clue/stream-filter/src/functions_include.php',
@@ -283,7 +283,6 @@ class ComposerStaticInitd795849c57a4ef00c1feb42e8958b3a9
         'PrestaShop\\Module\\Ps_metrics\\Presenter\\FaqPresenter' => __DIR__ . '/../..' . '/src/Presenter/FaqPresenter.php',
         'PrestaShop\\Module\\Ps_metrics\\Presenter\\ShopDataPresenter' => __DIR__ . '/../..' . '/src/Presenter/ShopDataPresenter.php',
         'PrestaShop\\Module\\Ps_metrics\\Provider\\AnalyticsAccountsListProvider' => __DIR__ . '/../..' . '/src/Provider/AnalyticsAccountsListProvider.php',
-        'PrestaShop\\Module\\Ps_metrics\\Provider\\GoogleTagProvider' => __DIR__ . '/../..' . '/src/Provider/GoogleTagProvider.php',
         'PrestaShop\\Module\\Ps_metrics\\Repository\\ConfigurationRepository' => __DIR__ . '/../..' . '/src/Repository/ConfigurationRepository.php',
         'PrestaShop\\Module\\Ps_metrics\\Repository\\HookModuleRepository' => __DIR__ . '/../..' . '/src/Repository/HookModuleRepository.php',
         'PrestaShop\\Module\\Ps_metrics\\Repository\\OrderRepository' => __DIR__ . '/../..' . '/src/Repository/OrderRepository.php',
@@ -330,9 +329,9 @@ class ComposerStaticInitd795849c57a4ef00c1feb42e8958b3a9
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInitd795849c57a4ef00c1feb42e8958b3a9::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInitd795849c57a4ef00c1feb42e8958b3a9::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInitd795849c57a4ef00c1feb42e8958b3a9::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit6fe22d3985705fb178eede4145961712::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit6fe22d3985705fb178eede4145961712::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit6fe22d3985705fb178eede4145961712::$classMap;
 
         }, null, ClassLoader::class);
     }

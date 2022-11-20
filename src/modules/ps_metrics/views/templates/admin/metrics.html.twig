@@ -27,7 +27,11 @@
 {% endblock %}
 
 {% block stylesheets %}
-  <link rel="stylesheet" href="{{ pathMetricsAssets }}" type="text/css" media="all">
+  {% if useLocalVueApp == false %}
+    <link rel="stylesheet" href="{{ pathAssetsCdn }}" type="text/css" media="all">
+  {% elseif  useLocalVueApp == true and useBuildModeOnly == true %}
+    <link rel="stylesheet" href="{{ pathAssetsBuilded }}" type="text/css" media="all">
+  {% endif %}
 
   <style>
     /** Hide native multistore module activation panel, because of visual regressions on non-bootstrap content */
@@ -62,9 +66,14 @@
     var adminToken = '{{ adminToken|raw }}';
   </script>
 
-  <script type="module" src="{{ pathMetricsApp }}" async defer></script>
-
-  {% if pathMetricsAppSourceMap is not null %}
-    <script type="application/json" src="{{ pathMetricsAppSourceMap }}" async defer></script>
+  {% if useLocalVueApp == true %}
+    {% if useBuildModeOnly == true %}
+      <script type="module" src="{{ pathAppBuilded }}"></script>
+    {% else %}
+      <script type="module" src="https://localhost:3001/@vite/client"></script>
+      <script type="module" src="https://localhost:3001/src/main.ts"></script>
+    {% endif %}
+  {% else %}
+    <script type="module" src="{{ pathAppCdn }}"></script>
   {% endif %}
 {% endblock %}

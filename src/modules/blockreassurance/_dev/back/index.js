@@ -38,7 +38,7 @@ $(window).ready(() => {
   $('.listing-body').sortable({
     update() {
       const blocks = [];
-      $('.listing-general-rol').each(function () {
+      $('.listing-general-rol').each(() => {
         blocks.push($(this).attr('data-block'));
       });
 
@@ -170,7 +170,7 @@ $(window).ready(() => {
 
     const landscape = $(`.panel-body-${id} .psr-picto`).attr('src');
 
-    if (typeof landscape === 'undefined' || landscape === 'undefined') {
+    if (typeof landscape === 'undefined') {
       $('.psr-picto:visible').hide();
       $('.svg_chosed_here:visible').hide();
       $('.landscape').show();

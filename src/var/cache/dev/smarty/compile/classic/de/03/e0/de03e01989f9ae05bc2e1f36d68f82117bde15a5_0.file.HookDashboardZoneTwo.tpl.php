@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.43, created on 2022-11-01 20:08:11
+/* Smarty version 3.1.43, created on 2022-11-20 20:06:45
   from '/var/www/html/modules/ps_metrics/views/templates/hook/HookDashboardZoneTwo.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.43',
-  'unifunc' => 'content_63616e9b2f9701_06562098',
+  'unifunc' => 'content_637a7ac5a40010_98428346',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'de03e01989f9ae05bc2e1f36d68f82117bde15a5' => 
     array (
       0 => '/var/www/html/modules/ps_metrics/views/templates/hook/HookDashboardZoneTwo.tpl',
-      1 => 1667329651,
+      1 => 1668971084,
       2 => 'file',
     ),
   ),
@@ -20,23 +20,36 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_63616e9b2f9701_06562098 (Smarty_Internal_Template $_smarty_tpl) {
-?><link href="<?php echo call_user_func_array($_smarty_tpl->registered_plugins[ 'modifier' ][ 'escape' ][ 0 ], array( $_smarty_tpl->tpl_vars['pathMetricsApp']->value,'htmlall','UTF-8' ));?>
-" rel=preload as=script>
-
+function content_637a7ac5a40010_98428346 (Smarty_Internal_Template $_smarty_tpl) {
+?>
 <div id="metrics-app"></div>
-<link rel="stylesheet" href="<?php echo call_user_func_array($_smarty_tpl->registered_plugins[ 'modifier' ][ 'escape' ][ 0 ], array( $_smarty_tpl->tpl_vars['pathMetricsAssets']->value ));?>
+
+<?php if ($_smarty_tpl->tpl_vars['useLocalVueApp']->value == false) {?>
+  <link rel="stylesheet" href="<?php echo call_user_func_array($_smarty_tpl->registered_plugins[ 'modifier' ][ 'escape' ][ 0 ], array( $_smarty_tpl->tpl_vars['pathAssetsCdn']->value ));?>
 " type="text/css" media="all">
+<?php } elseif ($_smarty_tpl->tpl_vars['useLocalVueApp']->value == true && $_smarty_tpl->tpl_vars['useBuildModeOnly']->value == true) {?>
+  <link rel="stylesheet" href="<?php echo call_user_func_array($_smarty_tpl->registered_plugins[ 'modifier' ][ 'escape' ][ 0 ], array( $_smarty_tpl->tpl_vars['pathAssetsBuilded']->value ));?>
+" type="text/css" media="all">
+<?php }?>
 
-<?php echo '<script'; ?>
- type="module" src="<?php echo call_user_func_array($_smarty_tpl->registered_plugins[ 'modifier' ][ 'escape' ][ 0 ], array( $_smarty_tpl->tpl_vars['pathMetricsApp']->value,'htmlall','UTF-8' ));?>
-" async defer><?php echo '</script'; ?>
+<?php if ($_smarty_tpl->tpl_vars['useLocalVueApp']->value == true) {?>
+  <?php if ($_smarty_tpl->tpl_vars['useBuildModeOnly']->value == true) {?>
+    <?php echo '<script'; ?>
+ type="module" src="<?php echo call_user_func_array($_smarty_tpl->registered_plugins[ 'modifier' ][ 'escape' ][ 0 ], array( $_smarty_tpl->tpl_vars['pathAppBuilded']->value,'htmlall','UTF-8' ));?>
+"><?php echo '</script'; ?>
 >
-
-<?php if ($_smarty_tpl->tpl_vars['pathMetricsAppSourceMap']->value) {?>
+  <?php } else { ?>
+    <?php echo '<script'; ?>
+ type="module" src="https://localhost:3001/@vite/client"><?php echo '</script'; ?>
+>
+    <?php echo '<script'; ?>
+ type="module" src="https://localhost:3001/src/main.ts"><?php echo '</script'; ?>
+>
+  <?php }
+} else { ?>
   <?php echo '<script'; ?>
- type="application/json" src="<?php echo call_user_func_array($_smarty_tpl->registered_plugins[ 'modifier' ][ 'escape' ][ 0 ], array( $_smarty_tpl->tpl_vars['pathMetricsAppSourceMap']->value ));?>
-" async defer><?php echo '</script'; ?>
+ type="module" src="<?php echo call_user_func_array($_smarty_tpl->registered_plugins[ 'modifier' ][ 'escape' ][ 0 ], array( $_smarty_tpl->tpl_vars['pathAppCdn']->value,'htmlall','UTF-8' ));?>
+"><?php echo '</script'; ?>
 >
 <?php }
 }

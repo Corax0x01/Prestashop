@@ -55,7 +55,7 @@ class Upgrade
             $moduleManagerBuilder = ModuleManagerBuilder::getInstance();
             $moduleManager = $moduleManagerBuilder->build();
 
-            return $moduleManager->upgrade($this->module->name);
+            return $moduleManager->upgrade((string) $this->module->name);
         }
 
         return true;

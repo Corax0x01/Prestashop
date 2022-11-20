@@ -2,15 +2,15 @@
 
 {shop_url}
 
-Wiadomość od klienta {shop_name}
+Message from a {shop_name} customer
 
-Adres e-mail klienta: {email}
+Customer Email Address: {email}
 
-Numer zamówienia:  {order_name}
+Order ID #:  {order_name}
 
-Załączony plik: {attached_file}
+Attached file: {attached_file}
 
-Wiadomość klienta:
+Customer message:
 
 {message}
 

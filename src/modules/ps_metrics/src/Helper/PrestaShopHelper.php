@@ -121,6 +121,10 @@ class PrestaShopHelper
      */
     public function getLink()
     {
+        if (null == $this->context->link) {
+            throw new \PrestaShopException('Link is null or invalid');
+        }
+
         return $this->context->link;
     }
 
@@ -131,6 +135,10 @@ class PrestaShopHelper
      */
     public function getShopId(): int
     {
+        if (null == $this->context->shop) {
+            throw new \PrestaShopException('Shop is null or invalid');
+        }
+
         return (int) $this->context->shop->id;
     }
 
@@ -141,6 +149,10 @@ class PrestaShopHelper
      */
     public function getShopDomain(): string
     {
+        if (null == $this->context->shop) {
+            throw new \PrestaShopException('Shop is null or invalid');
+        }
+
         return $this->context->shop->domain;
     }
 

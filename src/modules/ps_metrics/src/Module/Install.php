@@ -75,7 +75,7 @@ class Install
             return false;
         }
 
-        return $this->hookModuleRepository->setModuleHookPosition($hookId, $this->module->id, $position);
+        return $this->hookModuleRepository->setModuleHookPosition($hookId, (int) $this->module->id, $position);
     }
 
     /**

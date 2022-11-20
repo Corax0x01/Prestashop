@@ -26,52 +26,38 @@
 import './front.scss';
 
 $(window).ready(() => {
-  /**
-   * @param {String} imgSrc
-   */
-  function styleSVG(imgSrc) {
-    const imgTarget = $(`.blockreassurance_product img.svg.invisible[src="${imgSrc}"], .blockreassurance img.svg.invisible[src="${imgSrc}"]`);
+  function styleSVG() {
+    const imgObject = $(this);
+    const imgID = imgObject.attr('id');
+    const imgClass = imgObject.attr('class');
+    const imgURL = imgObject.attr('src');
 
-    if (imgTarget.length === 0) {
-      return;
-    }
-
-    // Fetch the image
     $.ajax({
-      url: imgSrc,
+      url: imgURL,
       type: 'GET',
       success(data) {
         if ($.isXMLDoc(data)) {
           // Get the SVG tag, ignore the rest
           let $svg = $(data).find('svg');
+          // Add replaced image's ID to the new SVG
+          $svg = typeof imgID !== 'undefined' ? $svg.attr('id', imgID) : $svg;
+          // Add replaced image's classes to the new SVG
+          $svg = typeof imgClass !== 'undefined' ? $svg.attr('class', `${imgClass} replaced-svg`) : $svg.attr('class', ' replaced-svg');
+          $svg.removeClass('invisible');
           // Add URL in data
-          $svg = $svg.attr('data-img-url', imgSrc);
+          $svg = $svg.attr('data-img-url', imgURL);
           // Remove any invalid XML tags as per http://validator.w3.org
           $svg = $svg.removeAttr('xmlns:a');
           // Set color defined in backoffice
           $svg.find('path[fill]').attr('fill', window.psr_icon_color);
           $svg.find('path:not([fill])').css('fill', window.psr_icon_color);
-          // For each element, replace the svg with specific ID & CSS class
-          imgTarget.each(function () {
-            const imgID = $(this).attr('id');
-            const imgClass = $(this).attr('class');
-            let $imgSvg = $svg.clone();
-            // Add replaced image's ID to the new SVG
-            $imgSvg = typeof imgID !== 'undefined' ? $imgSvg.attr('id', imgID) : $imgSvg;
-            // Add replaced image's classes to the new SVG
-            $imgSvg = typeof imgClass !== 'undefined' ? $imgSvg.attr('class', `${imgClass} replaced-svg`) : $imgSvg.attr('class', ' replaced-svg');
-            $imgSvg.removeClass('invisible');
-            $(this).replaceWith($imgSvg);
-          });
+          // Replace image with new SVG
+          imgObject.replaceWith($svg);
         }
+        imgObject.removeClass('invisible');
       },
     });
   }
 
-  const imgSrcSvg = $('.blockreassurance_product img.svg, .blockreassurance img.svg').map(function () {
-    return $(this).attr('src');
-  }).toArray();
-  imgSrcSvg
-    .filter((el, pos) => imgSrcSvg.indexOf(el) === pos)
-    .forEach(styleSVG);
+  $('.blockreassurance_product img.svg, .blockreassurance img.svg').each(styleSVG);
 });

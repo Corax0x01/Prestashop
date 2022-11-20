@@ -1,9 +1,9 @@
 <?php return array(
     'root' => array(
         'name' => 'prestashopcorp/ps_metrics',
-        'pretty_version' => 'dev-5693f83942614f39e4047d27052746abbf38a9da',
-        'version' => 'dev-5693f83942614f39e4047d27052746abbf38a9da',
-        'reference' => '5693f83942614f39e4047d27052746abbf38a9da',
+        'pretty_version' => 'dev-b16c87574377df81c3ca1c54ab3626e87c93ccea',
+        'version' => 'dev-b16c87574377df81c3ca1c54ab3626e87c93ccea',
+        'reference' => 'b16c87574377df81c3ca1c54ab3626e87c93ccea',
         'type' => 'prestashop-module',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -122,9 +122,9 @@
             'dev_requirement' => false,
         ),
         'prestashopcorp/ps_metrics' => array(
-            'pretty_version' => 'dev-5693f83942614f39e4047d27052746abbf38a9da',
-            'version' => 'dev-5693f83942614f39e4047d27052746abbf38a9da',
-            'reference' => '5693f83942614f39e4047d27052746abbf38a9da',
+            'pretty_version' => 'dev-b16c87574377df81c3ca1c54ab3626e87c93ccea',
+            'version' => 'dev-b16c87574377df81c3ca1c54ab3626e87c93ccea',
+            'reference' => 'b16c87574377df81c3ca1c54ab3626e87c93ccea',
             'type' => 'prestashop-module',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

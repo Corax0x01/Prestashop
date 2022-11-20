@@ -2,11 +2,11 @@
 
 {shop_url}
 
-Witaj {firstname} {lastname},
+Hi {firstname} {lastname},
 
-Import zakończony
+Import finished
 
-Twój plik {filename} został poprawnie zaimportowany do Twojego sklepu.
+The file {filename} has been successfully imported to your shop.
 
 [{shop_name}]({shop_url})
 

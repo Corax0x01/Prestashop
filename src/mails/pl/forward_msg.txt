@@ -2,15 +2,15 @@
 
 {shop_url}
 
-Witaj {firstname} {lastname},
+Hi {firstname} {lastname},
 
-Obsługa klienta - dyskusja przekazana dalej
+Customer Service - Discussion Forwarded
 
-{employee} chciał Ci przekazać tę dyskusję.
+{employee} wanted to forward this discussion to you.
 
-Historia dyskusji: {messages}
+Discussion history: {messages}
 
-{employee} dodał {comment}
+{employee} added {comment}
 
 [{shop_name}]({shop_url})
 
