@@ -7585,70 +7585,7 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
         }
 
         elseif (0 === strpos($pathinfo, '/modules')) {
-            if (0 === strpos($pathinfo, '/modules/metrics')) {
-                // metrics_page
-                if ('/modules/metrics' === $pathinfo) {
-                    $ret = array (  '_controller' => 'PrestaShop\\Module\\Ps_metrics\\Controller\\Admin\\MetricsController::renderApp',  '_legacy_controller' => 'AdminMetricsController',  '_legacy_link' => 'AdminMetricsController',  '_route' => 'metrics_page',);
-                    if (!in_array($canonicalMethod, ['GET'])) {
-                        $allow = array_merge($allow, ['GET']);
-                        goto not_metrics_page;
-                    }
-
-                    return $ret;
-                }
-                not_metrics_page:
-
-                // metrics_api_resolver
-                if (0 === strpos($pathinfo, '/modules/metrics/api') && preg_match('#^/modules/metrics/api(?:/(?P<query>[^/]++))?$#sD', $pathinfo, $matches)) {
-                    $ret = $this->mergeDefaults(array_replace($matches, ['_route' => 'metrics_api_resolver']), array (  'query' => '',  '_controller' => 'PrestaShop\\Module\\Ps_metrics\\Controller\\Admin\\MetricsResolverController::resolve',));
-                    if (!in_array($canonicalMethod, ['GET', 'POST'])) {
-                        $allow = array_merge($allow, ['GET', 'POST']);
-                        goto not_metrics_api_resolver;
-                    }
-
-                    return $ret;
-                }
-                not_metrics_api_resolver:
-
-                // metrics_api_legacy_stats
-                if ('/modules/metrics/legacy/stats' === $pathinfo) {
-                    $ret = array (  '_controller' => 'PrestaShop\\Module\\Ps_metrics\\Controller\\Admin\\MetricsLegacyStatsController::redirectToLegacyStats',  '_legacy_controller' => 'AdminMetricsLegacyStatsController',  '_legacy_link' => 'AdminMetricsLegacyStatsController',  '_route' => 'metrics_api_legacy_stats',);
-                    if (!in_array($canonicalMethod, ['GET'])) {
-                        $allow = array_merge($allow, ['GET']);
-                        goto not_metrics_api_legacy_stats;
-                    }
-
-                    return $ret;
-                }
-                not_metrics_api_legacy_stats:
-
-                // metrics_oauth
-                if ('/modules/metrics/oauth' === $pathinfo) {
-                    $ret = array (  '_controller' => 'PrestaShop\\Module\\Ps_metrics\\Controller\\Admin\\MetricsOauthController::oauth',  '_route' => 'metrics_oauth',);
-                    if (!in_array($canonicalMethod, ['GET', 'POST'])) {
-                        $allow = array_merge($allow, ['GET', 'POST']);
-                        goto not_metrics_oauth;
-                    }
-
-                    return $ret;
-                }
-                not_metrics_oauth:
-
-                // metrics_graphql
-                if ('/modules/metrics/graphql' === $pathinfo) {
-                    $ret = array (  '_controller' => 'PrestaShop\\Module\\Ps_metrics\\Controller\\Admin\\MetricsGraphqlController::execute',  '_route' => 'metrics_graphql',);
-                    if (!in_array($canonicalMethod, ['GET', 'POST'])) {
-                        $allow = array_merge($allow, ['GET', 'POST']);
-                        goto not_metrics_graphql;
-                    }
-
-                    return $ret;
-                }
-                not_metrics_graphql:
-
-            }
-
-            elseif (0 === strpos($pathinfo, '/modules/link-widget')) {
+            if (0 === strpos($pathinfo, '/modules/link-widget')) {
                 // admin_link_block_list
                 if ('/modules/link-widget/list' === $pathinfo) {
                     $ret = array (  '_controller' => 'PrestaShop\\Module\\LinkList\\Controller\\Admin\\Improve\\Design\\LinkBlockController::listAction',  '_legacy_controller' => 'AdminLinkWidget',  '_legacy_link' => 'AdminLinkWidget',  '_route' => 'admin_link_block_list',);
@@ -7738,6 +7675,69 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
                     return $ret;
                 }
                 not_admin_link_block_update_positions:
+
+            }
+
+            elseif (0 === strpos($pathinfo, '/modules/metrics')) {
+                // metrics_page
+                if ('/modules/metrics' === $pathinfo) {
+                    $ret = array (  '_controller' => 'PrestaShop\\Module\\Ps_metrics\\Controller\\Admin\\MetricsController::renderApp',  '_legacy_controller' => 'AdminMetricsController',  '_legacy_link' => 'AdminMetricsController',  '_route' => 'metrics_page',);
+                    if (!in_array($canonicalMethod, ['GET'])) {
+                        $allow = array_merge($allow, ['GET']);
+                        goto not_metrics_page;
+                    }
+
+                    return $ret;
+                }
+                not_metrics_page:
+
+                // metrics_api_resolver
+                if (0 === strpos($pathinfo, '/modules/metrics/api') && preg_match('#^/modules/metrics/api(?:/(?P<query>[^/]++))?$#sD', $pathinfo, $matches)) {
+                    $ret = $this->mergeDefaults(array_replace($matches, ['_route' => 'metrics_api_resolver']), array (  'query' => '',  '_controller' => 'PrestaShop\\Module\\Ps_metrics\\Controller\\Admin\\MetricsResolverController::resolve',));
+                    if (!in_array($canonicalMethod, ['GET', 'POST'])) {
+                        $allow = array_merge($allow, ['GET', 'POST']);
+                        goto not_metrics_api_resolver;
+                    }
+
+                    return $ret;
+                }
+                not_metrics_api_resolver:
+
+                // metrics_api_legacy_stats
+                if ('/modules/metrics/legacy/stats' === $pathinfo) {
+                    $ret = array (  '_controller' => 'PrestaShop\\Module\\Ps_metrics\\Controller\\Admin\\MetricsLegacyStatsController::redirectToLegacyStats',  '_legacy_controller' => 'AdminMetricsLegacyStatsController',  '_legacy_link' => 'AdminMetricsLegacyStatsController',  '_route' => 'metrics_api_legacy_stats',);
+                    if (!in_array($canonicalMethod, ['GET'])) {
+                        $allow = array_merge($allow, ['GET']);
+                        goto not_metrics_api_legacy_stats;
+                    }
+
+                    return $ret;
+                }
+                not_metrics_api_legacy_stats:
+
+                // metrics_oauth
+                if ('/modules/metrics/oauth' === $pathinfo) {
+                    $ret = array (  '_controller' => 'PrestaShop\\Module\\Ps_metrics\\Controller\\Admin\\MetricsOauthController::oauth',  '_route' => 'metrics_oauth',);
+                    if (!in_array($canonicalMethod, ['GET', 'POST'])) {
+                        $allow = array_merge($allow, ['GET', 'POST']);
+                        goto not_metrics_oauth;
+                    }
+
+                    return $ret;
+                }
+                not_metrics_oauth:
+
+                // metrics_graphql
+                if ('/modules/metrics/graphql' === $pathinfo) {
+                    $ret = array (  '_controller' => 'PrestaShop\\Module\\Ps_metrics\\Controller\\Admin\\MetricsGraphqlController::execute',  '_route' => 'metrics_graphql',);
+                    if (!in_array($canonicalMethod, ['GET', 'POST'])) {
+                        $allow = array_merge($allow, ['GET', 'POST']);
+                        goto not_metrics_graphql;
+                    }
+
+                    return $ret;
+                }
+                not_metrics_graphql:
 
             }
 

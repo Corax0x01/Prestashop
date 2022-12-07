@@ -6,6 +6,8 @@ services:
       myprestashop:
     ports:
       - 8080:80
+      - 80:80
+      - 4433:443
     links:
       - mariadb:mariadb
     depends_on:
@@ -15,6 +17,7 @@ services:
       - ./src/modules:/var/www/html/modules
       - ./src/themes:/var/www/html/themes
       - ./src/override:/var/www/html/override
+      - ./docker:/docker
     environment:
       - PS_DEV_MODE=1
       - DB_SERVER=mariadb

@@ -1,0 +1,3 @@
+Product ID;Attribute (Name:Type);Value;Default (0 = No, 1 = Yes)
+503;Kolor:color;Red;1
+503;Kolor:color;Blue;0

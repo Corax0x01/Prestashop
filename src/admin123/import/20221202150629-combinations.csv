@@ -1,0 +1,5 @@
+Product ID;Product reference;Attribute (Name:Type);Value;Default (0 = No, 1 = Yes);Image alt text;Quantity
+1;led2;Długość:select:0;5m:0;0;5;50
+1;led1;Długość:select:0;2m:0;1;2;50
+3;led2;Długość:select:0;5m:0;1;5;50
+3;led1;Długość:select:0;2m:0;0;2;50

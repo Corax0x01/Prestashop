@@ -1,0 +1,3 @@
+Product ID;Attribute (Name:Type);Value;Default (0 = No, 1 = Yes);Quantity
+1;Długość:select:0;5m:0;0;50
+1;Długość:select:0;2m:0;1;50

@@ -34,3 +34,6 @@ download/
 img/tmp/
 upload/
 database/
+src_img/
+
+.idea
