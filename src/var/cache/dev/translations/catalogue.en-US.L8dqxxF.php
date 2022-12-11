@@ -175,6 +175,16 @@ $catalogue = new MessageCatalogue('en-US', array (
     'Check / Uncheck all' => 'Check / Uncheck all',
     'Confirm this action' => 'Confirm this action',
   ),
+  'ModulesDataprivacyAdmin' => 
+  array (
+    'The personal data you provide is used to answer queries, process orders or allow access to specific information. You have the right to modify and delete all the personal information found in the "My Account" page.' => 'The personal data you provide is used to answer queries, process orders or allow access to specific information. You have the right to modify and delete all the personal information found in the "My Account" page.',
+    'Customer data privacy block' => 'Customer data privacy block',
+    'Adds a block displaying a message about a customer\'s privacy data.' => 'Adds a block displaying a message about a customer\'s privacy data.',
+    'Customer data privacy message for customer form:' => 'Customer data privacy message for customer form:',
+    'The customer data privacy message will be displayed in the customer form' => 'The customer data privacy message will be displayed in the customer form',
+    'Tip: If the customer privacy message is too long to be written directly in the form, you can add a link to one of your pages. This can easily be created via the "Pages" page under the "Design" menu.' => 'Tip: If the customer privacy message is too long to be written directly in the form, you can add a link to one of your pages. This can easily be created via the "Pages" page under the "Design" menu.',
+    'Reassure your customers, display a short notice to let them know you care about privacy.' => 'Reassure your customers, display a short notice to let them know you care about privacy.',
+  ),
   'AdminAdvparametersFeature' => 
   array (
     'Menu' => 'Menu',
@@ -6618,16 +6628,6 @@ Thanks for your patience.',
     'Total number of visits within the date range. A visit is the period of time a user is actively engaged with your website.' => 'Total number of visits within the date range. A visit is the period of time a user is actively engaged with your website.',
     'Ecommerce Conversion Rate is the percentage of visits that resulted in an validated order.' => 'Ecommerce Conversion Rate is the percentage of visits that resulted in an validated order.',
     'Net profit is a measure of the profitability of a venture after accounting for all Ecommerce costs. You can provide these costs by clicking on the configuration icon right above here.' => 'Net profit is a measure of the profitability of a venture after accounting for all Ecommerce costs. You can provide these costs by clicking on the configuration icon right above here.',
-  ),
-  'ModulesDataprivacyAdmin' => 
-  array (
-    'Customer data privacy block' => 'Customer data privacy block',
-    'Adds a block displaying a message about a customer\'s privacy data.' => 'Adds a block displaying a message about a customer\'s privacy data.',
-    'Customer data privacy message for customer form:' => 'Customer data privacy message for customer form:',
-    'The customer data privacy message will be displayed in the customer form' => 'The customer data privacy message will be displayed in the customer form',
-    'Tip: If the customer privacy message is too long to be written directly in the form, you can add a link to one of your pages. This can easily be created via the "Pages" page under the "Design" menu.' => 'Tip: If the customer privacy message is too long to be written directly in the form, you can add a link to one of your pages. This can easily be created via the "Pages" page under the "Design" menu.',
-    'The personal data you provide is used to answer queries, process orders or allow access to specific information. You have the right to modify and delete all the personal information found in the "My Account" page.' => 'The personal data you provide is used to answer queries, process orders or allow access to specific information. You have the right to modify and delete all the personal information found in the "My Account" page.',
-    'Reassure your customers, display a short notice to let them know you care about privacy.' => 'Reassure your customers, display a short notice to let them know you care about privacy.',
   ),
   'ModulesDataprivacyShop' => 
   array (

@@ -8,17 +8,19 @@ import time
 
 BASE_URL = "https://localhost:4433"
 
-driver = webdriver.Chrome()
+options = webdriver.ChromeOptions()
+options.add_argument('ignore-certificate-errors')
+
+
+driver = webdriver.Chrome(options=options)
 driver.maximize_window()
 driver.get(BASE_URL)
-
-time.sleep(5)
 
 
 def addProductsToCart():
     # getting category links
-    leds_link = driver.find_elements(By.CLASS_NAME, "dropdown-item")[2].get_attribute("href")
-    lamps_link = driver.find_elements(By.CLASS_NAME, "dropdown-item")[3].get_attribute("href")
+    leds_link = driver.find_elements(By.CLASS_NAME, "dropdown-item")[1].get_attribute("href")
+    lamps_link = driver.find_elements(By.CLASS_NAME, "dropdown-item")[2].get_attribute("href")
 
     product_links = []
 

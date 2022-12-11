@@ -1,0 +1,32 @@
+<?php
+
+global $_MODULE;
+$_MODULE = array();
+$_MODULE['<{ps_themecusto}prestashop>ps_themecusto_95db0d5190e9cdbed521ecf6ea2373ca'] = 'Dostosowanie motywu';
+$_MODULE['<{ps_themecusto}prestashop>ps_themecusto_6bc4c51a874584ecf02f1baf09879189'] = 'Łatwo zbuduj swoją stronę główną: uzyskaj dostęp do głównych modułów frontowych i szybko je skonfiguruj. Funkcja dostępna na stronie Design > Theme & Logo.';
+$_MODULE['<{ps_themecusto}prestashop>ps_themecusto_f87b9438e8de65a83e7a3ef56a9d23fb'] = 'Wystąpił błąd podczas instalacji. Prosimy o kontakt poprzez stronę Addons';
+$_MODULE['<{ps_themecusto}prestashop>ps_themecusto_483e3e074a5d95afb68e454b8f675ddb'] = 'Wystąpił błąd podczas odinstalowywania. Prosimy o kontakt poprzez stronę Addons';
+$_MODULE['<{ps_themecusto}prestashop>page_791d9c090acf71156d40d9c57157c77b'] = 'Moduł %s został wyłączony';
+$_MODULE['<{ps_themecusto}prestashop>index_abccb80adfe3d53a54e87842d9334938'] = 'Zaawansowana personalizacja';
+$_MODULE['<{ps_themecusto}prestashop>index_e1135a82239026c7b92d9e897d47d222'] = 'Możesz edytować swój arkusz motywu używając funkcji motywu rodzica/dziecka	';
+$_MODULE['<{ps_themecusto}prestashop>index_7ab2c451410ad06638de9434c52f65e6'] = 'Tylko dla zaawansowanych.';
+$_MODULE['<{ps_themecusto}prestashop>index_d84abdd10f2d2d71421ee3e170e0dc4c'] = 'Zespół wsparcia technicznego może nie być w stanie pomóc Ci w problemach stworzonych przez Twój własny motyw potomny.';
+$_MODULE['<{ps_themecusto}prestashop>index_fed862396f1f8eeef3dc2de2d0a6acb0'] = 'Pobierz swój obecny motyw	';
+$_MODULE['<{ps_themecusto}prestashop>index_ea9cc7f52bb2ea1205e4129d3c362745'] = 'Wybrałeś motyw, ale nadal chcesz wnieść kilka konkretnych poprawek? Pobierz motyw dziecka, pozwoli Ci to zachować części, które chcesz i dostosować pozostałe!	';
+$_MODULE['<{ps_themecusto}prestashop>index_6518fce96e9f5c0e9aefa03a77a52fa2'] = 'Edytuj swój motyw dziecka';
+$_MODULE['<{ps_themecusto}prestashop>index_08d370b6a89f63d62b7b4eff96720690'] = 'Po utworzeniu motywu dziecka, następny krok jest prosty: zastosuj zmiany, które chcesz w żądanych plikach, to zajmie się częścią dostosowywania, zachowując wygląd i funkcjonalność motywu rodzica.	';
+$_MODULE['<{ps_themecusto}prestashop>index_b2fa5e05a1326d68a2205dfedbbe172f'] = 'Prześlij swój motyw dziecka';
+$_MODULE['<{ps_themecusto}prestashop>index_563b7dfacb0fd4e3951885b477f1dc79'] = 'Ponieważ przynosisz tylko modyfikacje do motywu dziecka, możesz łatwo zaktualizować motyw nadrzędny, nie tracąc swoich dostosowań.	';
+$_MODULE['<{ps_themecusto}prestashop>index_a25c753ee3e4be15ec0daa5a40deb7b8'] = 'Wystąpił błąd';
+$_MODULE['<{ps_themecusto}prestashop>index_90b89dfb6ce7a8368b1e36050f4419c3'] = 'Sprawdź, czy masz uprawnienia do zapisu w folderach /app/cache/ i /themes/	';
+$_MODULE['<{ps_themecusto}prestashop>index_2e0cc8edc76bb0e55a9912012b824119'] = 'Pobierz motyw';
+$_MODULE['<{ps_themecusto}prestashop>index_c7e71badf20a04f36d11be557ceb7a5b'] = 'Pobieranie';
+$_MODULE['<{ps_themecusto}prestashop>index_5b944026692d208f651ccee464180a5a'] = 'Jak używać motywów rodzic/dziecko';
+$_MODULE['<{ps_themecusto}prestashop>index_818e5c22853d1cea07ded7cb82e137c2'] = 'Prześlij motyw dziecka';
+$_MODULE['<{ps_themecusto}prestashop>index_a82be0f551b8708bc08eb33cd9ded0cf'] = 'Informacja';
+$_MODULE['<{ps_themecusto}prestashop>index_5195aacc657bf8c980eb34b1cc2773dc'] = 'Korzystając z tej metody, możesz nadpisać tylko CSS swojego motywu.';
+$_MODULE['<{ps_themecusto}prestashop>index_a4948128259baac74a6e50aa5f7d6dfc'] = 'Korzystając z tej metody, możesz nadpisać CSS i html swojego motywu, a także dodać tagi analityczne.	';
+$_MODULE['<{ps_themecusto}prestashop>index_8ab4ab192bbbd5d5e2be4061ed32fa76'] = 'Po przesłaniu, motyw dziecka będzie dostępny w sekcji Motywy i logo.';
+$_MODULE['<{ps_themecusto}prestashop>index_339f7a2e087a159e6a31501649027a77'] = 'Strona główna';
+$_MODULE['<{ps_themecusto}prestashop>index_bc4327368b4abb06c1ea90fe0ddd36d6'] = 'Strona kategorii';
+$_MODULE['<{ps_themecusto}prestashop>index_eb763a2e313718f33f55e1f0d84df6ee'] = 'Strona produktu';

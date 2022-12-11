@@ -6,7 +6,6 @@ services:
       myprestashop:
     ports:
       - 8080:80
-      - 80:80
       - 4433:443
     links:
       - mariadb:mariadb
@@ -14,9 +13,6 @@ services:
       - mariadb
     volumes:
       - ./src/:/var/www/html
-      - ./src/modules:/var/www/html/modules
-      - ./src/themes:/var/www/html/themes
-      - ./src/override:/var/www/html/override
       - ./docker:/docker
     environment:
       - PS_DEV_MODE=1

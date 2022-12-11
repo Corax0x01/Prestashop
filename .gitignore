@@ -21,7 +21,10 @@ config/xml/*.xml
 *sitemap.xml
 themes/*/cache/
 modules/*/config*.xml
+logs/dev.log
+
 src/var/cache/
+src/vendor/
 
 # Site content
 # The following folders contain product images, virtual products, CSV's, etc.
