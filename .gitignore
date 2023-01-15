@@ -38,6 +38,6 @@ img/tmp/
 upload/
 database/
 src_img/
-dhlefn/
+# dhlefn/
 
 .idea

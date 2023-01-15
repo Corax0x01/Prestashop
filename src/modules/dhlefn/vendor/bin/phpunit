@@ -1,0 +1,28 @@
+#!/usr/bin/env sh
+
+#
+# DHL European Fulfillment Network
+#
+# This file is licenced under the Software License Agreement.
+# With the purchase or the installation of the software in your application
+# you accept the licence agreement.
+#
+# You must not modify, adapt or create derivative works of this source code
+#
+# @author    resment <info@resment.com>
+# @copyright 2021 resment
+# @license   See joined file licence.txt
+#
+
+dir=$(cd "${0%[/\\]*}" > /dev/null; cd "../phpunit/phpunit" && pwd)
+
+if [ -d /proc/cygdrive ]; then
+    case $(which php) in
+        $(readlink -n /proc/cygdrive)/*)
+            # We are in Cygwin using Windows php, so the path must be translated
+            dir=$(cygpath -m "$dir");
+            ;;
+    esac
+fi
+
+"${dir}/phpunit" "$@"
