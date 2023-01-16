@@ -9,4 +9,4 @@ cp /docker/000-default.conf /etc/apache2/sites-available/000-default.conf
 a2enmod ssl
 
 echo "ServerName localhost" >> /etc/apache2/apache2.conf
-service apache2 restart && sleep infinity
+service apache2 restart
