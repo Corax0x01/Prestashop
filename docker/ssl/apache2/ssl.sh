@@ -10,3 +10,4 @@ a2enmod ssl
 
 echo "ServerName localhost" >> /etc/apache2/apache2.conf
 service apache2 restart
+exec tail -f /dev/null
