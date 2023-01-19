@@ -1,0 +1,41 @@
+version: "3"
+services:
+  be_184280_presta:
+    container_name: be_184280_presta
+    image: corax01/blyskawica_pottera
+    ports:
+      - 18428:80
+      - 18429:443
+    links:
+      - be_184280_mariadb:be_184280_mariadb
+    depends_on:
+      - be_184280_mariadb
+    environment:
+      - PS_DEV_MODE=0
+      - DB_SERVER=be_184280_mariadb
+      - DB_USER=be_184280
+      - DB_PASSWD=password
+      - DB_NAME=prestashop
+      - PS_INSTALL_AUTO=0
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 3s
+        max_attempts: 3
+        window: 60s
+
+  be_184280_mariadb:
+    container_name: be_184280_mariadb
+    image: mariadb
+    volumes:
+      - ./db:/docker-entrypoint-initdb.d:ro
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=prestashop
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 3s
+        max_attempts: 3
+        window: 60s
+
