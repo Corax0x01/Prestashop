@@ -6,7 +6,7 @@ from selenium.webdriver.common.by import By
 
 import time
 
-BASE_URL = "https://localhost:4433"
+BASE_URL = "https://localhost:18429"
 
 options = webdriver.ChromeOptions()
 options.add_argument('ignore-certificate-errors')
@@ -85,7 +85,7 @@ def chooseDeliveryAndPayment():
     # starts from delivery choose page
 
     # choose delivery option
-    delivery_option = random.randint(9, 10) # 10 - InPost, 9 - DHL
+    delivery_option = random.randint(11, 13) # 13 - InPost, 11 - DHL
     driver.find_element(By.ID, f"delivery_option_{delivery_option}").click()
 
     time.sleep(2)
@@ -93,7 +93,7 @@ def chooseDeliveryAndPayment():
     driver.find_element(By.NAME, "confirmDeliveryOption").click()
 
     # choose payment on delivery
-    driver.find_element(By.ID, "payment-option-11").click()
+    driver.find_element(By.ID, "payment-option-2").click()
     driver.find_element(By.NAME, "conditions_to_approve[terms-and-conditions]").click()
 
     time.sleep(2)
