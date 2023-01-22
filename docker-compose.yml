@@ -26,7 +26,7 @@ services:
 
   be_184280_mariadb:
     container_name: be_184280_mariadb
-    image: mariadb
+    image: mariadb:10.8.2
     volumes:
       - ./db:/docker-entrypoint-initdb.d:ro
     environment:
