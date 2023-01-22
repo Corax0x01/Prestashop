@@ -1,52 +1,44 @@
 version: "3"
 services:
-  prestashop:
-    image: prestashop/prestashop:1.7.8.7
-    networks:
-      myprestashop:
+  be_184280_presta:
+    container_name: be_184280_presta
+    image: corax01/blyskawica_pottera
     ports:
-      - 8080:80
-      - 4433:443
+      - 18428:80
+      - 18429:443
     links:
-      - mariadb:mariadb
+      - be_184280_mariadb:be_184280_mariadb
     depends_on:
-      - mariadb
-    volumes:
-      - ./src/:/var/www/html
-      - ./docker:/docker
+      - be_184280_mariadb
     environment:
-      - PS_DEV_MODE=1
-      - DB_SERVER=mariadb
-      - DB_USER=root
-      - DB_PASSWD=root
+      - PS_DEV_MODE=0
+      - DB_SERVER=be_184280_mariadb
+      - DB_USER=be_184280
+      - DB_PASSWD=password
       - DB_NAME=prestashop
       - PS_INSTALL_AUTO=0
-
-  mariadb:
-    image: mariadb
-    networks:
-      myprestashop:
     volumes:
-      - ./database:/var/lib/mysql
+      - ./src/:/var/www/html
+
+  be_184280_mariadb:
+    container_name: be_184280_mariadb
+    image: mariadb:10.8.2
+    volumes:
+      - ./db:/docker-entrypoint-initdb.d:ro
     environment:
       - MYSQL_ROOT_PASSWORD=root
       - MYSQL_DATABASE=prestashop
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
-    networks:
-      myprestashop:
     links:
-      - mariadb:mariadb
+      - be_184280_mariadb:be_184280_mariadb
     ports:
       - 1235:80
     depends_on:
-      - mariadb
+      - be_184280_mariadb
     environment:
-      - PMA_HOST=mariadb
+      - PMA_HOST=be_184280_mariadb
       - PMA_USER=root
       - PMA_PASSWORD=root
 
-networks:
-  myprestashop:
-    external: true
