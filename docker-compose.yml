@@ -2,7 +2,7 @@ version: "3"
 services:
   be_184280_presta:
     container_name: be_184280_presta
-    image: corax01/blyskawica_pottera
+    image: corax01/blyskawica_pottera:2
     ports:
       - 18428:80
       - 18429:443
